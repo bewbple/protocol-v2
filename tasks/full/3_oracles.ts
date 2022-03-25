@@ -56,7 +56,7 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
       let lendingRateOracle: LendingRateOracle;
 
       if (notFalsyOrZeroAddress(aaveOracleAddress)) {
-        aaveOracle = await await getAaveOracle(aaveOracleAddress);
+        aaveOracle = await getAaveOracle(aaveOracleAddress);
         await waitForTx(await aaveOracle.setAssetSources(tokens, aggregators));
       } else {
         aaveOracle = await deployAaveOracle(
@@ -69,12 +69,15 @@ task('full:deploy-oracles', 'Deploy oracles for dev enviroment')
           ],
           verify
         );
+        console.log("deployed")
         await waitForTx(await aaveOracle.setAssetSources(tokens, aggregators));
       }
 
       if (notFalsyOrZeroAddress(lendingRateOracleAddress)) {
+        console.log('herp2')
         lendingRateOracle = await getLendingRateOracle(lendingRateOracleAddress);
       } else {
+        console.log('herp22')
         lendingRateOracle = await deployLendingRateOracle(verify);
         const { USD, ...tokensAddressesWithoutUsd } = tokensToWatch;
         await setInitialMarketRatesInRatesOracleByHelper(

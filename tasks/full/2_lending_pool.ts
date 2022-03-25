@@ -75,10 +75,10 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
         eContractid.LendingPoolConfigurator,
         lendingPoolConfiguratorProxy.address
       );
-      const admin = await DRE.ethers.getSigner(await getEmergencyAdmin(poolConfig));
+      // const admin = await DRE.ethers.getSigner(await getEmergencyAdmin(poolConfig));
+      
       // Pause market during deployment
-      await waitForTx(await lendingPoolConfiguratorProxy.connect(admin).setPoolPause(true));
-
+      // await waitForTx(await lendingPoolConfiguratorProxy.connect(admin).setPoolPause(true));
       // Deploy deployment helpers
       await deployStableAndVariableTokensHelper(
         [lendingPoolProxy.address, addressesProvider.address],

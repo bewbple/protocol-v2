@@ -60,6 +60,8 @@ const getCommonNetworkConfig = (networkName: eNetwork, networkId: number) => ({
   blockGasLimit: DEFAULT_BLOCK_GAS_LIMIT,
   gasMultiplier: DEFAULT_GAS_MUL,
   gasPrice: NETWORKS_DEFAULT_GAS[networkName],
+  gasLimit: 900 * 1000 * 1000 * 1000,
+  gas: 100 * 1000 * 1000 * 1000,
   chainId: networkId,
   accounts: {
     mnemonic: MNEMONIC,
